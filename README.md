@@ -1,2 +1,2 @@
-# Panorama
-Multiple Image Stitching
+# Panorama - Multiple Image Stitching
+
