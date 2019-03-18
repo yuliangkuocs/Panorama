@@ -17,4 +17,4 @@ for i in range(0, len(files)-1):
 
     file_stitch = stitchImage(file1, file2)
 
-    file_stitch.saveImage(FileIO.SAVE_TEST)
+    file_stitch.saveImage(FileIO.SAVE_RESULT)
