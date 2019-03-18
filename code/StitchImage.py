@@ -70,8 +70,8 @@ def stitchImage(file1, file2):
     print('getting masks of images...')
     mask_cover, mask1, mask2 = ImageModule.getMask(warp_img, raw_img)
 
-    file_tmp = FileIO.File('homo image', warp_img)
-    file_tmp.saveImage(FileIO.SAVE_TEST)
+    file_tmp = FileIO.File('homo image {0}'.format(file1.name), warp_img)
+    file_tmp.saveImage(FileIO.SAVE_HOMO)
 
     blend_img = ImageModule.blending(warp_img, raw_img, mask_cover, mask1, mask2)
 

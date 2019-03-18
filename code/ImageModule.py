@@ -92,12 +92,6 @@ def cutPadding(image, imgs=None, masks=None):
             for i, img in enumerate(imgs):
                 imgs[i] = img[:, :img.shape[1] - 1, :]
 
-    saveImage('cut pad stitch.JPG', image)
-
-    if imgs:
-        for i in range(len(imgs)):
-            saveImage('cut pad img{0}.JPG'.format(i+1), imgs[i])
-
     return image, imgs, masks
 
 
@@ -239,8 +233,3 @@ def getMask(img1, img2):
 def showImage(name, image):
     cv2.imshow(name, image)
     cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-
-def saveImage(name, image):
-    cv2.imwrite(name, image)

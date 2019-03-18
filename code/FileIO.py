@@ -7,7 +7,7 @@ from glob import glob
 SAVE_RESULT = 0
 SAVE_MATCH = 1
 SAVE_TEST = 2
-SAVE_PADDING = 3
+SAVE_HOMO = 3
 
 
 class File:
@@ -32,13 +32,13 @@ class File:
             if save_type == SAVE_RESULT:
                 save_dir = 'result'
             elif save_type == SAVE_MATCH:
-                save_dir = 'match'
+                save_dir = 'log/match'
             elif save_type == SAVE_TEST:
-                save_dir = 'test'
-            elif save_type == SAVE_PADDING:
-                save_dir = 'padding'
+                save_dir = 'log/test'
+            elif save_type == SAVE_HOMO:
+                save_dir = 'log/homo'
             else:
-                print('save type not accepted\nmust be {0}~{1}'.format(SAVE_RESULT, SAVE_PADDING))
+                print('save type not accepted\nmust be {0}~{1}'.format(SAVE_RESULT, SAVE_HOMO))
                 return
 
             try:
