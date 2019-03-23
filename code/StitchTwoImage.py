@@ -45,6 +45,37 @@ def getHomographyMatrix(kp1, kp2, matches):
     return h
 
 
+def isWarpGood(warp_img):
+    check_mask = np.full(shape=warp_img.shape, fill_value=1)
+    check_mask[1: check_mask.shape[0] - 1, 1: check_mask.shape[1] - 1, :] = 0
+
+    isTooBig = np.any(np.logical_and(np.any(warp_img, axis=2), np.any(check_mask, axis=2)))
+
+    nonZeroCounts = np.count_nonzero(warp_img, axis=2)
+
+    maxWidth = np.count_nonzero(nonZeroCounts, axis=1).max()
+    maxHeight = np.count_nonzero(nonZeroCounts, axis=0).max()
+
+    isTooThin = maxWidth / maxHeight < 1 / 20 or maxWidth / maxHeight > 20
+
+    isTooSmall = np.count_nonzero(nonZeroCounts) < warp_img.shape[0] * warp_img.shape[1] / 30
+
+    print('isTooBig:', isTooBig, ', isTooSmall:', isTooSmall, 'isTooThin:', isTooThin)
+    return not (isTooBig or isTooSmall or isTooThin)
+
+
+def getMask(img1, img2):
+    if img1.shape != img2.shape:
+        print('The shape of img1 must be the same as the shape of img2')
+        return
+
+    all_true = np.full(shape=img1.shape, fill_value=1)
+    mask1 = np.logical_and(np.any(img1, axis=2), np.any(all_true, axis=2))
+    mask2 = np.logical_and(np.any(img2, axis=2), np.any(all_true, axis=2))
+
+    return np.logical_and(mask1, mask2), mask1, mask2
+
+
 def drawMatchImage(name, image):
     ImageModel.saveImage(name, image, ImageModel.SAVE_MATCH)
 
@@ -71,14 +102,18 @@ def stitchTwoImage(image_model1, image_model2):
                          warp_img,
                          ImageModel.SAVE_HOMO)
 
+    if not isWarpGood(warp_img):
+        print('[Warning] The warp image is terrible, discard data \'{0}\''.format(image_model2.name))
+        return image_model1, False
+
     raw_img = Padding.paddingNormalize(raw_img)
 
     print('getting masks of images...')
-    mask_cover, mask1, mask2 = Padding.getMask(warp_img, raw_img)
+    mask_cover, mask1, mask2 = getMask(warp_img, raw_img)
 
     print('blending images...')
     blend_img = alphaBlending(warp_img, raw_img, mask_cover, mask1, mask2)
 
     image_model_stitch = ImageModel.ImageModel(image_model1.name + ' ' + image_model2.name, blend_img)
 
-    return image_model_stitch
+    return image_model_stitch, True

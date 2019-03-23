@@ -92,15 +92,3 @@ def cutPadding(image, imgs=None, masks=None):
                 imgs[i] = img[:, :img.shape[1] - 1, :]
 
     return image, imgs, masks
-
-
-def getMask(img1, img2):
-    if img1.shape != img2.shape:
-        print('The shape of img1 must be the same as the shape of img2')
-        return
-
-    all_true = np.full(shape=img1.shape, fill_value=1)
-    mask1 = np.logical_and(np.any(img1, axis=2), np.any(all_true, axis=2))
-    mask2 = np.logical_and(np.any(img2, axis=2), np.any(all_true, axis=2))
-
-    return np.logical_and(mask1, mask2), mask1, mask2

@@ -7,10 +7,10 @@ import os
 import cv2
 from glob import glob
 
-SAVE_RESULT = 0
-SAVE_MATCH = 1
-SAVE_TEST = 2
-SAVE_HOMO = 3
+SAVE_RESULT = DEL_RESULT = 0
+SAVE_MATCH = DEL_MATCH = 1
+SAVE_TEST = DEL_TEST = 2
+SAVE_HOMO = DEL_HOMO = 3
 
 IMAGE_FORMAT = ['.jpg', '.JPG', '.png', '.PNG', '.tif', '.TIF', '.bmp', '.BMP', '.jpeg', '.JPEG']
 
@@ -76,3 +76,23 @@ def loadImage(shrink_times):
         imageModels.append(ImageModel(name, images[i]))
 
     return imageModels
+
+
+def removeImage(name, del_type):
+    name = appendFormatToName(name)
+
+    if del_type == DEL_RESULT:
+        del_dir = 'result'
+    elif del_type == DEL_MATCH:
+        del_dir = 'log/match'
+    elif del_type == DEL_TEST:
+        del_dir = 'log/test'
+    elif del_type == DEL_HOMO:
+        del_dir = 'log/homo'
+    else:
+        print('delete type did not accept\nmust be {0}~{1}'.format(DEL_RESULT, DEL_HOMO))
+        return
+
+    path = os.path.join(os.path.abspath(__file__ + '/../../{0}/'.format(del_dir)), name)
+    os.remove(path)
+    print('image \'{0}\' at {1} already deleted.'.format(name, del_dir))

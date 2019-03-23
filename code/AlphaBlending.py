@@ -28,7 +28,6 @@ def alphaBlending(img1, img2, mask_cover, mask1, mask2):
         for col in range(image.shape[1]):
             if masks[0][row, col]:
                 alpha, beta = caculateAlphaBeta(region, row, col, rowCoverState, colCoverState)
-
                 image[row, col] = 0.5 * (alpha * imgs[0][row, col] + (1 - alpha) * imgs[1][row, col]) + 0.5 * (beta * imgs[0][row, col] + (1 - beta) * imgs[1][row, col])
 
     return image
