@@ -1,8 +1,10 @@
 import cv2
+import logging
 import numpy as np
 import ImageModel
 import Padding
 from AlphaBlending import alphaBlending
+from AlphaBlending import Laplacian_Pyramid_Blending_with_mask
 
 
 def getFeature(image):
@@ -101,6 +103,10 @@ def stitchTwoImage(image_model1, image_model2):
     ImageModel.saveImage('homo image {0} -> {1}'.format(image_model1.name, image_model2.name),
                          warp_img,
                          ImageModel.SAVE_HOMO)
+    logging.basicConfig(filename='log.txt', level=logging.DEBUG)
+    logging.debug('\nhomo image {0} -> {1}'.format(image_model1.name, image_model2.name))
+    logging.debug('\nhomography matrix:\n')
+    logging.debug(h)
 
     if not isWarpGood(warp_img):
         print('[Warning] The warp image is terrible, discard data \'{0}\''.format(image_model2.name))
@@ -112,6 +118,7 @@ def stitchTwoImage(image_model1, image_model2):
     mask_cover, mask1, mask2 = getMask(warp_img, raw_img)
 
     print('blending images...')
+    # blend_img = Laplacian_Pyramid_Blending_with_mask(warp_img, raw_img, mask_cover, num_levels=6)
     blend_img = alphaBlending(warp_img, raw_img, mask_cover, mask1, mask2)
 
     image_model_stitch = ImageModel.ImageModel(image_model1.name + ' ' + image_model2.name, blend_img)

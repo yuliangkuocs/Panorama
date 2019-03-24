@@ -2,20 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df1edb7f-4dad-415a-a35e-fed2fb9d2a5f" name="Default" comment="Rearrange code">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/homo/readme.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/match/readme.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/log/test/readme.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/result/14 15 16 17 18 19 20.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/result/14 15 16 17 18 19.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/result/14 15 16 17 18.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/result/14 15 16 17.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/result/14 15 16.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/result/14 15.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/result/readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0012.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0013.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0014.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0015.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0016.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0017.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0018.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0019.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0020.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0021.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0022.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0023.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0024.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0025.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0026.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0027.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0028.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0029.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0030.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/DJI_0031.JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/log/match/match 1 + 2.JPG" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/AlphaBlending.py" afterPath="$PROJECT_DIR$/code/AlphaBlending.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/ImageModel.py" afterPath="$PROJECT_DIR$/code/ImageModel.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/Padding.py" afterPath="$PROJECT_DIR$/code/Padding.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/Panorama.py" afterPath="$PROJECT_DIR$/code/Panorama.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/StitchTwoImage.py" afterPath="$PROJECT_DIR$/code/StitchTwoImage.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,10 +49,10 @@
       <file leaf-file-name="AlphaBlending.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/AlphaBlending.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+            <state relative-caret-position="230">
+              <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,18 +61,18 @@
       <file leaf-file-name="Padding.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/Padding.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2139">
+            <state relative-caret-position="623">
               <caret line="93" column="29" lean-forward="false" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Panorama.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Panorama.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/Panorama.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+            <state relative-caret-position="-599">
+              <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
               </folding>
@@ -71,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StitchTwoImage.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StitchTwoImage.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/StitchTwoImage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-656">
-              <caret line="68" column="63" lean-forward="false" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
+            <state relative-caret-position="293">
+              <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -98,6 +107,7 @@
       <find>saveImage</find>
       <find>ImageModule</find>
       <find>terrible</find>
+      <find>getMa</find>
     </findStrings>
     <replaceStrings>
       <replace>ImageModel</replace>
@@ -112,12 +122,12 @@
       <list>
         <option value="$PROJECT_DIR$/code/DataModel.py" />
         <option value="$PROJECT_DIR$/code/ImageModule.py" />
-        <option value="$PROJECT_DIR$/code/AlphaBlending.py" />
         <option value="$PROJECT_DIR$/code/Padding.py" />
         <option value="$PROJECT_DIR$/code/Test.py" />
-        <option value="$PROJECT_DIR$/code/test.py" />
-        <option value="$PROJECT_DIR$/code/StitchTwoImage.py" />
         <option value="$PROJECT_DIR$/code/ImageModel.py" />
+        <option value="$PROJECT_DIR$/code/test.py" />
+        <option value="$PROJECT_DIR$/code/AlphaBlending.py" />
+        <option value="$PROJECT_DIR$/code/StitchTwoImage.py" />
         <option value="$PROJECT_DIR$/code/Panorama.py" />
       </list>
     </option>
@@ -172,11 +182,6 @@
               <item name="Panorama" type="b2602c69:ProjectViewProjectNode" />
               <item name="Panorama" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Panorama" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Panorama" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -294,12 +299,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18168813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39955106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -320,7 +325,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -338,7 +343,7 @@
         <state relative-caret-position="644">
           <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -402,7 +407,7 @@
         <state relative-caret-position="621">
           <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -424,24 +429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/AlphaBlending.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Padding.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2139">
-          <caret line="93" column="29" lean-forward="false" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/Cellar/python3/3.6.2/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/numpy/core/numeric.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -458,14 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/ImageModel.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -474,22 +453,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/StitchTwoImage.py">
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2017.2/python_stubs/-1625016946/cv2/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-656">
-          <caret line="68" column="63" lean-forward="false" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
+        <state relative-caret-position="18">
+          <caret line="9296" column="13" lean-forward="true" selection-start-line="9296" selection-start-column="13" selection-end-line="9296" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/AlphaBlending.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="27" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/Padding.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="93" column="29" lean-forward="false" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/code/Panorama.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        <state relative-caret-position="-599">
+          <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/StitchTwoImage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
