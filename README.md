@@ -12,5 +12,5 @@
 
 ## 待做
 - 此程式採用blending的作法為 alpha blending，此方式速度較慢且多張照片的重複區域會較模糊，理論上multi-band blending效果會較好且更快，但自己實作失敗，尚待研究
-- 有些許data算出來的homography matrix會有不好的結果，造成warp image失常，需要做例外處理
+- 有些許data算出來的homography matrix會有不好的結果，造成warp image失常，需要做例外處理 -> 已做初步的例外處理
 - 拼接出來的照片重疊邊界會有點黑邊瑕疵，可能是alpha blending的問題，尚須優化
