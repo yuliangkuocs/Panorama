@@ -1,39 +1,53 @@
 import cv2
-import logging
+import time
 import numpy as np
-import ImageModel
-import Padding
-from AlphaBlending import alphaBlending
-from AlphaBlending import Laplacian_Pyramid_Blending_with_mask
+from ImageModel import saveImage, ImageModel
+from Blending import multibandBlending
 
 
 def getFeature(image):
+    start = time.time()
+
     print('finding features...')
-    MAX_FEATURES = 500
+    MAX_FEATURES = int(image.shape[0] * image.shape[1] / 10000)
+    MAX_FEATURES = 500 if MAX_FEATURES < 500 else MAX_FEATURES
+
+    print('max features:', MAX_FEATURES)
 
     orb = cv2.ORB_create(MAX_FEATURES)
     keypoints, descriptors = orb.detectAndCompute(image, None)
+
+    end = time.time()
+
+    print('--', end - start, 's')
 
     return keypoints, descriptors
 
 
 def featureMatching(des1, des2):
     print('start matching descriptors...')
+    start = time.time()
+
     GOOD_MATCH_PERCENT = 0.15
 
-    matcher = cv2.DescriptorMatcher_create(cv2.DESCRIPTOR_MATCHER_BRUTEFORCE_HAMMING)
-    matches = matcher.match(des1, des2, None)
+    bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+    matches = bf.match(des1, des2)
 
-    matches.sort(key=lambda x: x.distance, reverse=False)
+    # Sort match descriptors in the order of their distance.
+    matches = sorted(matches, key=lambda x: x.distance)
 
     num_good_matches = int(len(matches) * GOOD_MATCH_PERCENT)
     matches = matches[:num_good_matches]
+
+    print('--', time.time() - start, 's')
 
     return matches
 
 
 def getHomographyMatrix(kp1, kp2, matches):
     print('calculating homography matrix...')
+    start = time.time()
+
     points1 = np.zeros((len(matches), 2), dtype=np.float32)
     points2 = np.zeros((len(matches), 2), dtype=np.float32)
 
@@ -41,53 +55,82 @@ def getHomographyMatrix(kp1, kp2, matches):
         points1[i, :] = kp1[match.queryIdx].pt
         points2[i, :] = kp2[match.trainIdx].pt
 
-    h, mask = cv2.findHomography(points1, points2, cv2.RANSAC)
-    print('Homography Matrix:\n', h)
+    h, s = cv2.findHomography(points1, points2, cv2.RANSAC)
 
-    return h
+    inliers_radio = float(np.sum(s)) / float(len(s))
 
+    isHomographyGood = inliers_radio >= 0.2
 
-def isWarpGood(warp_img):
-    check_mask = np.full(shape=warp_img.shape, fill_value=1)
-    check_mask[1: check_mask.shape[0] - 1, 1: check_mask.shape[1] - 1, :] = 0
+    print('homography matrix inliers radio:', inliers_radio)
 
-    isTooBig = np.any(np.logical_and(np.any(warp_img, axis=2), np.any(check_mask, axis=2)))
+    print('--', time.time() - start, 's')
 
-    nonZeroCounts = np.count_nonzero(warp_img, axis=2)
-
-    maxWidth = np.count_nonzero(nonZeroCounts, axis=1).max()
-    maxHeight = np.count_nonzero(nonZeroCounts, axis=0).max()
-
-    isTooThin = maxWidth / maxHeight < 1 / 20 or maxWidth / maxHeight > 20
-
-    isTooSmall = np.count_nonzero(nonZeroCounts) < warp_img.shape[0] * warp_img.shape[1] / 30
-
-    print('isTooBig:', isTooBig, ', isTooSmall:', isTooSmall, 'isTooThin:', isTooThin)
-    return not (isTooBig or isTooSmall or isTooThin)
+    return h, isHomographyGood
 
 
-def getMask(img1, img2):
-    if img1.shape != img2.shape:
-        print('The shape of img1 must be the same as the shape of img2')
-        return
+def getMask(img):
+    all_true = np.full(shape=img.shape, fill_value=1)
+    mask = np.logical_and(np.any(img, axis=2), np.any(all_true, axis=2))
+    mask = np.asarray(mask, dtype=np.uint8)
 
-    all_true = np.full(shape=img1.shape, fill_value=1)
-    mask1 = np.logical_and(np.any(img1, axis=2), np.any(all_true, axis=2))
-    mask2 = np.logical_and(np.any(img2, axis=2), np.any(all_true, axis=2))
+    return mask
 
-    return np.logical_and(mask1, mask2), mask1, mask2
+
+def cutPadding(images, mask=None):
+    # Cut black padding of the image to make it as small as possible
+    start = time.time()
+
+    if mask is None:
+        mask = images[0].copy()
+    else:
+        mask = np.expand_dims(mask, axis=2)
+
+    for i in range(mask.shape[0]):
+        if np.sum(mask[i, :, :]):
+            break
+        for i in range(len(images)):
+            images[i] = images[i][1:, :, :]
+
+    for i in range(mask.shape[1]):
+        if np.sum(mask[:, i, :]):
+            break
+        for i in range(len(images)):
+            images[i] = images[i][:, 1:, :]
+
+    for i in range(mask.shape[0]):
+        if np.sum(mask[mask.shape[0] - 1 - i, :, :]):
+            break
+        for i in range(len(images)):
+            images[i] = images[i][:images[i].shape[0] - 1, :, :]
+
+    for i in range(mask.shape[1]):
+        if np.sum(mask[:, mask.shape[1] - 1 - i, :]):
+            break
+        for i in range(len(images)):
+            images[i] = images[i][:, :images[i].shape[1] - 1, :]
+
+    print('--', time.time() - start, 's')
+
+    return images
+
+
+def isAlreadyStitch(mask1, mask2):
+    mask_xor = cv2.bitwise_xor(mask1, mask2)
+
+    return np.sum(mask_xor) < 0.01 * mask_xor.shape[0] * mask_xor.shape[1]
 
 
 def drawMatchImage(name, image):
-    ImageModel.saveImage(name, image, ImageModel.SAVE_MATCH)
+    saveImage(name, image, ImageModel.SAVE_MATCH)
 
 
 def stitchTwoImage(image_model1, image_model2):
-    stitch_img, raw_img = Padding.addPadding(image_model1.image, image_model2.image)
+    stitch_img, raw_img = image_model1.image, image_model2.image
 
     img1_gray = cv2.cvtColor(stitch_img, cv2.COLOR_BGR2GRAY)
     img2_gray = cv2.cvtColor(raw_img, cv2.COLOR_BGR2GRAY)
 
+    # Feature matching
     kp1, des1 = getFeature(img1_gray)
     kp2, des2 = getFeature(img2_gray)
 
@@ -96,31 +139,57 @@ def stitchTwoImage(image_model1, image_model2):
     img_match = cv2.drawMatches(stitch_img, kp1, raw_img, kp2, matches, None)
     drawMatchImage('match ' + image_model1.name + ' + ' + image_model2.name, img_match)
 
-    h = getHomographyMatrix(kp1, kp2, matches)
+    # Calculate homography matrix
+    h, isHomographyGood = getHomographyMatrix(kp1, kp2, matches)
 
-    warp_img = cv2.warpPerspective(stitch_img, h, (raw_img.shape[1], raw_img.shape[0]))
-
-    ImageModel.saveImage('homo image {0} -> {1}'.format(image_model1.name, image_model2.name),
-                         warp_img,
-                         ImageModel.SAVE_HOMO)
-    logging.basicConfig(filename='log.txt', level=logging.DEBUG)
-    logging.debug('\nhomo image {0} -> {1}'.format(image_model1.name, image_model2.name))
-    logging.debug('\nhomography matrix:\n')
-    logging.debug(h)
-
-    if not isWarpGood(warp_img):
-        print('[Warning] The warp image is terrible, discard data \'{0}\''.format(image_model2.name))
+    if not isHomographyGood:
+        print('[WARNING] Bad homography matrix, discard this data', image_model2.name)
         return image_model1, False
 
-    raw_img = Padding.paddingNormalize(raw_img)
+    # Warping
+    print('Warping...')
+    start = time.time()
 
-    print('getting masks of images...')
-    mask_cover, mask1, mask2 = getMask(warp_img, raw_img)
+    new_size = (raw_img.shape[1] + int(stitch_img.shape[1] * 1.5), raw_img.shape[0] + int(stitch_img.shape[0] * 1.5))
 
+    # put the image to the central position of the result image
+    t = np.identity(3, np.float)
+    t[0, 2] = new_size[0] / 4
+    t[1, 2] = new_size[1] / 4
+
+    pad_raw = cv2.warpPerspective(raw_img, t, new_size, borderMode=cv2.BORDER_REFLECT)
+    raw_mask = cv2.warpPerspective(raw_img, t, new_size)
+
+    pad_warp = cv2.warpPerspective(stitch_img, t.dot(h), new_size, borderMode=cv2.BORDER_REFLECT)
+    warp_mask = cv2.warpPerspective(stitch_img, t.dot(h), new_size)
+
+    stitch_mask = np.logical_or(getMask(raw_mask), getMask(warp_mask))
+    stitch_mask = np.asarray(stitch_mask, dtype=np.uint8)
+
+    saveImage('homo image {0} -> {1}'.format(image_model1.name, image_model2.name), warp_mask, ImageModel.SAVE_HOMO)
+
+    print('--', time.time() - start, 's')
+
+    # Cut Padding
+    print('Cut padding...')
+    cut_pad_images = [pad_raw, pad_warp, raw_mask, warp_mask]
+    [cut_pad_raw, cut_pad_warp, cut_pad_raw_mask, cut_pad_warp_mask] = cutPadding(cut_pad_images, stitch_mask)
+
+    if isAlreadyStitch(cut_pad_raw_mask, cut_pad_warp_mask):
+        print('Data {0} already stitched, so don\'t need to keep stitching.'.format(image_model2.name))
+        return image_model1, True
+
+    final_mask = cv2.bitwise_or(getMask(cut_pad_raw_mask), getMask(cut_pad_warp_mask))
+    final_mask = np.asarray(final_mask, dtype=np.uint8)
+
+    # Blending
     print('blending images...')
-    # blend_img = Laplacian_Pyramid_Blending_with_mask(warp_img, raw_img, mask_cover, num_levels=6)
-    blend_img = alphaBlending(warp_img, raw_img, mask_cover, mask1, mask2)
+    blend_mask = (np.sum(cut_pad_raw_mask, axis=2) != 0).astype(np.float)
 
-    image_model_stitch = ImageModel.ImageModel(image_model1.name + ' ' + image_model2.name, blend_img)
+    blend_img = multibandBlending(cut_pad_raw, cut_pad_warp, blend_mask)
+
+    blend_img = cv2.bitwise_and(blend_img, blend_img, mask=final_mask)
+
+    image_model_stitch = ImageModel(image_model1.name + ' ' + image_model2.name, blend_img)
 
     return image_model_stitch, True

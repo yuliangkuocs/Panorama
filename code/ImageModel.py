@@ -1,17 +1,8 @@
-# data model module
-# To manipulate file operation like load image, save image...
-# ImageModel member:
-#   name: the name of the image in 'str' type, without image format like '.JPG', '.png', ...
-#   image: the image in 'ndarray' type
 import os
 import cv2
 from glob import glob
 
-SAVE_RESULT = DEL_RESULT = 0
-SAVE_MATCH = DEL_MATCH = 1
-SAVE_TEST = DEL_TEST = 2
-SAVE_HOMO = DEL_HOMO = 3
-
+DATA_SHAPE = None
 IMAGE_FORMAT = ['.jpg', '.JPG', '.png', '.PNG', '.tif', '.TIF', '.bmp', '.BMP', '.jpeg', '.JPEG']
 
 
@@ -20,8 +11,15 @@ class ImageModel:
         self.name = removeFormatInName(name)
         self.image = image
 
+    SAVE_RESULT = DEL_RESULT = 0
+    SAVE_MATCH = DEL_MATCH = 1
+    SAVE_TEST = DEL_TEST = 2
+    SAVE_HOMO = DEL_HOMO = 3
+
 
 def removeFormatInName(name):
+    global IMAGE_FORMAT
+
     for img_format in IMAGE_FORMAT:
         name = name.replace(img_format, '')
 
@@ -36,18 +34,22 @@ def appendFormatToName(name):
 
 
 def saveImage(name, image, save_type):
+    global DATA_SHAPE
+    if image.shape == DATA_SHAPE:
+        return
+
     name = appendFormatToName(name)
 
-    if save_type == SAVE_RESULT:
+    if save_type == ImageModel.SAVE_RESULT:
         save_dir = 'result'
-    elif save_type == SAVE_MATCH:
+    elif save_type == ImageModel.SAVE_MATCH:
         save_dir = 'log/match'
-    elif save_type == SAVE_TEST:
+    elif save_type == ImageModel.SAVE_TEST:
         save_dir = 'log/test'
-    elif save_type == SAVE_HOMO:
+    elif save_type == ImageModel.SAVE_HOMO:
         save_dir = 'log/homo'
     else:
-        print('save type not accepted\nmust be {0}~{1}'.format(SAVE_RESULT, SAVE_HOMO))
+        print('save type not accepted\nmust be {0}~{1}'.format(ImageModel.SAVE_RESULT, ImageModel.SAVE_HOMO))
         return
 
     path = os.path.join(os.path.abspath(__file__ + '/../../{0}/'.format(save_dir)), name)
@@ -64,14 +66,17 @@ def loadImage(shrink_times):
     for i in range(shrink_times):
         images = [cv2.pyrDown(img) for img in images]
 
+    global DATA_SHAPE
+    DATA_SHAPE = images[0].shape
+
     imageModels = []
 
     for i in range(len(images_path)):
         s = os.path.abspath(__file__ + '/../') + '/../images/'
 
         original_name = images_path[i].replace(s, '')
-        name = str(i+1)
-        print('convert the data name \'{0}\' to \'{1}\''.format(original_name, name))
+        name = original_name.replace('DJI_', '')
+        # print('convert the data name \'{0}\' to \'{1}\''.format(original_name, name))
 
         imageModels.append(ImageModel(name, images[i]))
 
@@ -81,16 +86,16 @@ def loadImage(shrink_times):
 def removeImage(name, del_type):
     name = appendFormatToName(name)
 
-    if del_type == DEL_RESULT:
+    if del_type == ImageModel.DEL_RESULT:
         del_dir = 'result'
-    elif del_type == DEL_MATCH:
+    elif del_type == ImageModel.DEL_MATCH:
         del_dir = 'log/match'
-    elif del_type == DEL_TEST:
+    elif del_type == ImageModel.DEL_TEST:
         del_dir = 'log/test'
-    elif del_type == DEL_HOMO:
+    elif del_type == ImageModel.DEL_HOMO:
         del_dir = 'log/homo'
     else:
-        print('delete type did not accept\nmust be {0}~{1}'.format(DEL_RESULT, DEL_HOMO))
+        print('delete type did not accept\nmust be {0}~{1}'.format(ImageModel.DEL_RESULT, ImageModel.DEL_HOMO))
         return
 
     path = os.path.join(os.path.abspath(__file__ + '/../../{0}/'.format(del_dir)), name)
