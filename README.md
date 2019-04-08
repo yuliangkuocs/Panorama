@@ -15,7 +15,6 @@
 - numpy
 
 ## Introduction
-- 最一開始先找網路上各種資源，比較常用的就是openCV的stitcher，但是其沒辦法我們的dataset故作罷；也使用過microsoft的ICE 2，可以把全部照片都丟進去，也能達到很好的效果，但是他沒有API可以call所以也只能當作備案，最後找許多Github的code，幾乎都會要求圖片需要從左到右or從右到左，不然就是沒辦法一次跑幾十張5MB以上的圖片，所以決定自己撰寫code。
 - 我的圖像拼接演算法架構如下：於下個段落詳細說明
     1. Data Loading
     2. Feature Detecting & Descripting
@@ -25,9 +24,6 @@
     6. Blending
 
 ## Inplementation
-### Github
-- code都放在github上面比較方便版本控制
-- 
 ### Data Loading
 - 首先需要Loading所有的照片，並且全部改成numpy的格式(ndarray)，也就是OpenCV在Python中處理影像的格式，並且將照片依照檔名依序排好，完成這些步驟才能開始一張一張拼接。
 - 我會將每次拼接好的照片與下一張dataset中的照片拼接，每次都是跑StitchTwoImage(A, B)，A為拼接多張照片的大圖，B為原始dataset的下一張圖片
@@ -90,18 +86,11 @@ cut_pad_images = [pad_raw, pad_warp, raw_mask, warp_mask]
 - 最後就是將兩張圖經過blending拼捷在一起，常用的技術有兩種，一種是alpha blending，另一種事multi-band blending
 - alpha blending可能會讓圖產生幽靈效果，且速度也比multi-band blending慢，單純就是兩張圖權重的相加
 - multi-band blending更快且保有原圖片特性，但要選好mask區域否則會把圖片外白邊也混合進來
-- 以下都為data 14-20的圖片拼接，左為alpha blending，右為multi-band blending
-:::success
-可看出multi-band blending畫質會比alpha blending好上不少
-![alpha 14-20](https://i.imgur.com/2S8kyvA.jpg =45%x45%)　　　![](https://i.imgur.com/vSLS7Zc.jpg =45%x45%)
-:::
-- 但可以看出此圖中multi-band blending圖中會有些白邊的問題，有些圖片則不會有這個問題，可能是跟mask有關，需再進一步釐清
 
 ## Result
 - 找feature和算homography matrix都非常快速，都能在1s內完成，主要慢的是stitch image以及blending的地方，尤其當圖越合越大，所需時間也會快速上升
 - 目前速度狀況：（i5 CPU, 16G RAM, Mac Pro）
     - 合7張照片：157 s
-
 
 
 - data 183-197
@@ -110,8 +99,6 @@ cut_pad_images = [pad_raw, pad_warp, raw_mask, warp_mask]
 - data 49-57
 ![](https://i.imgur.com/SVmXDmD.jpg)
 
-
-###### tags: `Image Stitching` `Panorama` `OpenCV` `Python` `國網中心`
 
 
 
