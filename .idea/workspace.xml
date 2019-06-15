@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df1edb7f-4dad-415a-a35e-fed2fb9d2a5f" name="Default" comment="Rearrange code">
-      <change beforePath="$PROJECT_DIR$/.idea/Panorama.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Panorama.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/AlphaBlending.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Blending.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/ImageModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/ImageModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Padding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/Panorama.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/Panorama.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/StitchTwoImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/code/StitchTwoImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/homo/homo image 1 2 3 5 6 7 8 9 10 11 12 13 14 15 16 17 19 20 21 -&gt; 22.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/homo/homo image 1 2 3 5 6 7 8 9 10 11 12 13 14 15 16 17 19 20 21 -&gt; 23.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/homo/homo image 1 2 3 5 6 7 8 9 10 11 12 13 14 15 16 17 19 20 21 23 -&gt; 24.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/homo/test1.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/homo/test2.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test/12-13.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test/14-28.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test/14-29.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test/14-30.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test/14-31.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test/41-43.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test/bad homo.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/test/test.JPG" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,20 +15,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/Panorama.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
+            <state relative-caret-position="544">
               <caret line="34" column="104" selection-start-line="34" selection-start-column="104" selection-end-line="34" selection-end-column="104" />
-              <folding>
-                <element signature="e#0#6#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/StitchTwoImage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2992">
-              <caret line="176" selection-start-line="174" selection-start-column="4" selection-end-line="176" />
+            <state relative-caret-position="579">
+              <caret line="189" selection-start-line="189" selection-end-line="189" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -57,10 +33,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/Blending.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
+            <state relative-caret-position="323">
               <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
@@ -72,11 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/ImageModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
+            <state relative-caret-position="1139">
               <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-              <folding>
-                <element signature="e#235#244#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -117,14 +90,14 @@
         <option value="$PROJECT_DIR$/code/test.py" />
         <option value="$PROJECT_DIR$/code/AlphaBlending.py" />
         <option value="$PROJECT_DIR$/code/Padding.py" />
-        <option value="$PROJECT_DIR$/code/StitchTwoImage.py" />
         <option value="$PROJECT_DIR$/code/ImageModel.py" />
         <option value="$PROJECT_DIR$/code/Panorama.py" />
         <option value="$PROJECT_DIR$/code/Blending.py" />
+        <option value="$PROJECT_DIR$/code/StitchTwoImage.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -166,7 +139,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -286,15 +258,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15997182" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15997182" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32911393" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32771084" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32771084" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3939759" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -385,10 +356,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/Padding.py">
+    <entry file="file://$PROJECT_DIR$/code/Padding.py" />
+    <entry file="file://$PROJECT_DIR$/code/Panorama.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+        <state relative-caret-position="544">
+          <caret line="34" column="104" selection-start-line="34" selection-start-column="104" selection-end-line="34" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code/Blending.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -397,38 +376,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/ImageModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
+        <state relative-caret-position="1139">
           <caret line="69" column="32" selection-start-line="69" selection-start-column="32" selection-end-line="69" selection-end-column="32" />
-          <folding>
-            <element signature="e#235#244#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Panorama.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="104" selection-start-line="34" selection-start-column="104" selection-end-line="34" selection-end-column="104" />
-          <folding>
-            <element signature="e#0#6#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/StitchTwoImage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2992">
-          <caret line="176" selection-start-line="174" selection-start-column="4" selection-end-line="176" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/code/Blending.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        <state relative-caret-position="579">
+          <caret line="189" selection-start-line="189" selection-end-line="189" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
